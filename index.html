@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html class=" -webkit-">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,28 +48,29 @@
         }
             // 调用第三方程序//浏览器调用
             function launchApp() {
-                  alert( plus.os.name);
-                if ( plus.os.name == "Android" ) {
+                if (true ) {
+                    var link = "market://details?idcom.qqeng.online"
+                    $('a').attr('href', link)
                     // plus.runtime.launchApplication( {pname:"com.android.browser"
                     //     ,extra:{url:"http://www.html5plus.org"}}, function ( e ) {
                     //         alert( "Open system default browser failed: " + e.message );
                     // } );
-                        plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                            plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                                plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                                    plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                                        plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                                            plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                                                plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                                                    mui.alert("360手机助手和应用宝、华为市场、百度助手、安智市场、PP助手，你一个都没装，，感谢支持");
-                                                }, "com.pp.assistant"); //PP助手市场  
-                                            }, "cn.goapk.market"); //安智市场  
-                                        }, "com.dragon.android.pandaspace"); //百度助手市场                       
-                                    }, "com.huawei.appmarket"); //华为市场//                     
-                                }, "com.qihoo.appstore"); //360市场
-                            }, "com.tencent.android.qqdownloader"); //应用宝市场 
+                        // plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                        //     plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                        //         plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                        //             plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                        //                 plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                        //                     plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                        //                         plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                        //                             mui.alert("360手机助手和应用宝、华为市场、百度助手、安智市场、PP助手，你一个都没装，，感谢支持");
+                        //                         }, "com.pp.assistant"); //PP助手市场  
+                        //                     }, "cn.goapk.market"); //安智市场  
+                        //                 }, "com.dragon.android.pandaspace"); //百度助手市场                       
+                        //             }, "com.huawei.appmarket"); //华为市场//                     
+                        //         }, "com.qihoo.appstore"); //360市场
+                        //     }, "com.tencent.android.qqdownloader"); //应用宝市场 
 
-                        }, "com.android.vending");//google play
+                        // }, "com.android.vending");//google play
                 } else if ( plus.os.name == "iOS" ) {
                     var url= "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=682211190&pageNumber=0&sortOrdering=2&type=&mt=8";
                     plus.runtime.launchApplication( {action:url}, function ( e ) {
@@ -79,6 +80,12 @@
                     
                 }
             }
+            
+
+//通用 market://details?id=com.seebaby
+//华为市场 appmarket://details?id=com.seebaby
+//小米商店 mimarket://details?id=com.seebaby
+//应用宝  tmast://appdetails?pname=com.seebaby
         </script>
     </body>
 </html>

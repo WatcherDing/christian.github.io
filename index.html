@@ -22,55 +22,34 @@
         <a class="open-app">click me to store</a>
         
         <script type="text/javascript">
-
-            var iosLinkUrl = "http://apps.apple.com/cn/app/id387682726" // 淘宝 app store 下载地址
-            var androidLinkurl = "https://a.app.qq.com/o/simple.jsp?pkgname=com.lucky.luckyclient" //(找不到淘宝应用宝地址，这里以lucky coffee为例)
-
             var u = navigator.userAgent, isAndroid, isIOS
-
             window.onload = function() {
-                init()
+                //init()
+                var brand = judgeBrand(navigator.userAgent.toLowerCase()); 
+                var link = "market://details?id=com.qqeng.online";
+                if (brand == 'iphone') {
+                    link= "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=682211190&pageNumber=0&sortOrdering=2&type=&mt=8";
+                } else if (brand == 'huawei' ) {
+                    link= "appmarket://details?id=com.qqeng.online";
+                } else if (brand == 'oppo' ) {
+
+                } else if (brand == 'vivo') {
+
+                } else if (brand == 'xiaomi') {
+                    //url 下载
+                } else if (brand == 'samsung') {
+                     //url 下载
+                } else {
+                     //url 下载
+                    return 'default';
+                }
             }
 
-            function init() {
-                isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端
-                isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-
-                var link = isIOS ? iosLinkUrl : androidLinkurl
-                launchApp();
-               // $('a').attr('href', link)
-            }
-            // 扩展API加载完毕后调用onPlusReady回调函数
-        document.addEventListener( "plusready", onPlusReady, false );
-        // 扩展API加载完毕，现在可以正常调用扩展API
-        function onPlusReady() {
-        
-        }
             // 调用第三方程序//浏览器调用
-            function launchApp() {
+            function launchApp(link) {
                 if (true ) {
-                    var link = "market://details?id=com.qqeng.online"
-                    $('a').attr('href', link)
-                    // plus.runtime.launchApplication( {pname:"com.android.browser"
-                    //     ,extra:{url:"http://www.html5plus.org"}}, function ( e ) {
-                    //         alert( "Open system default browser failed: " + e.message );
-                    // } );
-                        // plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                        //     plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                        //         plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                        //             plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                        //                 plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                        //                     plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                        //                         plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
-                        //                             mui.alert("360手机助手和应用宝、华为市场、百度助手、安智市场、PP助手，你一个都没装，，感谢支持");
-                        //                         }, "com.pp.assistant"); //PP助手市场  
-                        //                     }, "cn.goapk.market"); //安智市场  
-                        //                 }, "com.dragon.android.pandaspace"); //百度助手市场                       
-                        //             }, "com.huawei.appmarket"); //华为市场//                     
-                        //         }, "com.qihoo.appstore"); //360市场
-                        //     }, "com.tencent.android.qqdownloader"); //应用宝市场 
-
-                        // }, "com.android.vending");//google play
+                    //var link = "market://details?id=com.qqeng.online"
+                    $('a').attr('href', link);
                 } else if ( plus.os.name == "iOS" ) {
                     var url= "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=682211190&pageNumber=0&sortOrdering=2&type=&mt=8";
                     plus.runtime.launchApplication( {action:url}, function ( e ) {
@@ -86,6 +65,36 @@
 //华为市场 appmarket://details?id=com.seebaby
 //小米商店 mimarket://details?id=com.seebaby
 //应用宝  tmast://appdetails?pname=com.seebaby
+
+function judgeBrand(sUserAgent) {
+       var isIphone = sUserAgent.match(/iphone/i) == "iphone";
+       var isHuawei = sUserAgent.match(/huawei/i) == "huawei";
+       var isHonor = sUserAgent.match(/honor/i) == "honor";
+       var isOppo = sUserAgent.match(/oppo/i) == "oppo";
+       var isOppoR15 = sUserAgent.match(/pacm00/i) == "pacm00";
+       var isVivo = sUserAgent.match(/vivo/i) == "vivo";
+       var isXiaomi = sUserAgent.match(/mi\s/i) == "mi ";
+       var isXiaomi2s = sUserAgent.match(/mix\s/i) == "mix ";
+       var isRedmi = sUserAgent.match(/redmi/i) == "redmi";
+       var isSamsung = sUserAgent.match(/sm-/i) == "sm-";
+
+       if (isIphone) {
+           return 'iphone';
+       } else if (isHuawei || isHonor) {
+           return 'huawei';
+       } else if (isOppo || isOppoR15) {
+           return 'oppo';
+       } else if (isVivo) {
+           return 'vivo';
+       } else if (isXiaomi || isRedmi || isXiaomi2s) {
+           return 'xiaomi';
+       } else if (isSamsung) {
+           return 'samsung';
+       } else {
+           return 'default';
+       }
+   }
+   
         </script>
     </body>
 </html>

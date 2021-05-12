@@ -52,7 +52,9 @@
             function launchApp(link) {
                 if (true ) {
                     //var link = "market://details?id=com.qqeng.online"
+                 
                     $('a').attr('href', link);
+                       alert( $('a').attr('href'));
                 } else if ( plus.os.name == "iOS" ) {
                     var url= "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=682211190&pageNumber=0&sortOrdering=2&type=&mt=8";
                     plus.runtime.launchApplication( {action:url}, function ( e ) {

@@ -24,10 +24,10 @@
         <script type="text/javascript">
             var u = navigator.userAgent, isAndroid, isIOS
             window.onload = function() {
-                 alert("xxxxx"+navigator.userAgent.toLowerCase());
+                // alert("xxxxx"+navigator.userAgent.toLowerCase());
                 //init()
                 var brand = judgeBrand(navigator.userAgent.toLowerCase()); 
-                alert(brand);
+               // alert(brand);
                 var link = "market://details?id=com.qqeng.online";
                 if (brand == 'iphone') {
                     link= "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=682211190&pageNumber=0&sortOrdering=2&type=&mt=8";
@@ -46,7 +46,7 @@
                    // return 'default';
                 }
                  $('a').attr('href', link);
-                launchApp(link);
+                //launchApp(link);
             }
 
             // 调用第三方程序//浏览器调用
@@ -57,7 +57,7 @@
 
 
                     $('a').attr('href', link);
-                       alert( $('a').attr('href'));
+                       //alert( $('a').attr('href'));
                 } else if ( plus.os.name == "iOS" ) {
                     var url= "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=682211190&pageNumber=0&sortOrdering=2&type=&mt=8";
                    

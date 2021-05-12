@@ -37,10 +37,47 @@
                 isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
                 var link = isIOS ? iosLinkUrl : androidLinkurl
-
-                $('a').attr('href', link)
+                launchApp();
+               // $('a').attr('href', link)
             }
-            
+            // 扩展API加载完毕后调用onPlusReady回调函数
+        document.addEventListener( "plusready", onPlusReady, false );
+        // 扩展API加载完毕，现在可以正常调用扩展API
+        function onPlusReady() {
+        
+        }
+            // 调用第三方程序//浏览器调用
+            function launchApp() {
+                if ( plus.os.name == "Android" ) {
+                    // plus.runtime.launchApplication( {pname:"com.android.browser"
+                    //     ,extra:{url:"http://www.html5plus.org"}}, function ( e ) {
+                    //         alert( "Open system default browser failed: " + e.message );
+                    // } );
+                        plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                            plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                                plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                                    plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                                        plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                                            plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                                                plus.runtime.openURL("market://details?id=com.zendaccess.smartaccess", function(e) {
+                                                    mui.alert("360手机助手和应用宝、华为市场、百度助手、安智市场、PP助手，你一个都没装，，感谢支持");
+                                                }, "com.pp.assistant"); //PP助手市场  
+                                            }, "cn.goapk.market"); //安智市场  
+                                        }, "com.dragon.android.pandaspace"); //百度助手市场                       
+                                    }, "com.huawei.appmarket"); //华为市场//                     
+                                }, "com.qihoo.appstore"); //360市场
+                            }, "com.tencent.android.qqdownloader"); //应用宝市场 
+
+                        }, "com.android.vending");//google play
+                } else if ( plus.os.name == "iOS" ) {
+                    var url= "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=682211190&pageNumber=0&sortOrdering=2&type=&mt=8";
+                    plus.runtime.launchApplication( {action:url}, function ( e ) {
+                        alert( "Open system default browser failed: " + e.message );
+                    } );
+
+                    
+                }
+            }
         </script>
     </body>
 </html>
